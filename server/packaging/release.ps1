@@ -138,7 +138,13 @@ if ($NoInstaller) {
         sha256  = $sha
         notes   = "Vox Manager $Version"
     }
-    $manifest | ConvertTo-Json | Set-Content (Join-Path $server 'dist\latest.json') -Encoding utf8
+    # Set-Content -Encoding utf8 emits a BOM on Windows PowerShell, and a BOM makes
+# json.loads() in the updater raise, which the caller swallows: updates would then
+# be silently dead. WriteAllText with UTF8Encoding($false) writes no BOM.
+[System.IO.File]::WriteAllText(
+    (Join-Path $server 'dist\latest.json'),
+    ($manifest | ConvertTo-Json),
+    (New-Object System.Text.UTF8Encoding($false)))
     OK "dist\latest.json  ->  $($manifest.url)"
 }
 

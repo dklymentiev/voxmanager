@@ -1,7 +1,6 @@
 # Vox Manager, Privacy Policy
 
-_Last updated: 2026-06-20. Draft. Host this at a public URL before submitting to
-Google Play._
+_Last updated: 2026-07-30. Published at https://voxmanager.com/privacy_
 
 Vox Manager ("the app") turns your phone into a microphone that types recognised
 speech into your own computer over your local network. We designed it to keep your
@@ -31,6 +30,18 @@ data on your devices.
 servers that receive your data. We do not collect, store, sell, or share any
 personal information.
 
+## The website
+
+This section is about voxmanager.com, not about the app; the two are separate and
+nothing described here touches what you dictate.
+
+The website records anonymous visit statistics (which pages were opened, the
+referring site, approximate country, browser and device type) using self-hosted
+analytics running on our own server. The data is not shared with an advertising
+network and is not used to build a profile of you. If you leave your address in the
+Pro waiting-list form, we store that address so we can write to you once, when Pro
+is ready.
+
 ## Permissions and why
 
 - **Microphone (RECORD_AUDIO):** to capture your speech for dictation.
@@ -49,5 +60,9 @@ We may update this policy; the "last updated" date will change accordingly.
 
 ## Contact
 
-Questions: privacy@voxmanager.com (set up this alias once the domain is live, or
-replace it with your own reachable address before submitting to Google Play).
+Open an issue at https://github.com/dklymentiev/voxmanager/issues. There is no
+mailing address to give: the project runs no mail server and no support inbox, and
+publishing one we do not read would be worse than saying so.
+
+For a security problem, do not open a public issue. Use GitHub's private
+vulnerability reporting on the same repository, as described in `SECURITY.md`.

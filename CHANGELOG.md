@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/); versions follow
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-07-30
+
+### Added
+- **Crash log.** The tray build is `--noconsole`, so a traceback, or a hard abort
+  inside a C extension, used to leave nothing behind but a line in the Windows event
+  log naming a DLL and an offset. `faulthandler` plus both excepthooks now write to
+  `~/.voxmanager/crash.log`. The typing log moved there too: it had been written next
+  to `__file__`, which under `--onefile` is the extracted temp directory that
+  PyInstaller wipes on exit, so it vanished exactly when it was needed.
+
 ### Security
 - **An unauthenticated peer can no longer wedge the PC server.** The HTTP server ran
   single-threaded and read the request body straight off the announced

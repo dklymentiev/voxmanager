@@ -27,6 +27,7 @@ Run:  python voxmanager_server.py            # tray, headless
 
 import argparse
 import base64
+import faulthandler
 import hashlib
 import hmac
 import http.server
@@ -38,6 +39,7 @@ import subprocess
 import sys
 import threading
 import time
+import traceback
 import urllib.request
 from pathlib import Path
 
@@ -106,7 +108,7 @@ PORT = 8765
 
 # Version + auto-update. APP_VERSION is the single source of truth for the built
 # server; release.ps1 verifies it matches the release tag and publishes a manifest.
-APP_VERSION = "1.2.2"
+APP_VERSION = "1.3.0"
 UPDATE_MANIFEST_URL = "https://voxmanager.com/latest.json"  # {version,url,sha256,notes}
 APP_URL = "https://play.google.com/store/apps/details?id=com.voxmanager"  # phone app; QR in the panel (placeholder until published)
 SERVER_PORT = PORT  # actual bound port, set at startup; shown in the info tab
@@ -121,6 +123,43 @@ DISCOVERY_RESPONSE = "VOXMANAGER_SERVER"
 
 CONFIG_DIR = Path.home() / ".voxmanager"
 CONFIG_FILE = CONFIG_DIR / "config.json"
+CRASH_LOG = CONFIG_DIR / "crash.log"
+_crash_log_handle = None  # kept alive for the process lifetime, see _enable_crash_log
+
+
+def _enable_crash_log():
+    """Write a stack trace somewhere that survives, for every way this can die.
+
+    The tray build is --noconsole, so stdout and stderr go nowhere: a traceback, or
+    a hard abort inside a C extension, leaves nothing behind except a bare entry in
+    the Windows event log naming a DLL and an offset. That is not enough to fix
+    anything. faulthandler covers the C-level aborts (a Tcl_Panic from tkinter shows
+    up here), the two excepthooks cover ordinary Python exceptions on the main and
+    on worker threads.
+
+    The file lives in CONFIG_DIR rather than next to the script: under PyInstaller
+    --onefile, __file__ resolves inside the extracted _MEIxxxx temp directory, which
+    is wiped when the process exits, so anything written there is lost precisely
+    when it is needed.
+    """
+    try:
+        CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+        # Kept open for the lifetime of the process on purpose: faulthandler writes
+        # to this descriptor from a signal handler and must not reopen it there.
+        f = open(CRASH_LOG, "a", encoding="utf-8", buffering=1)
+        f.write(f"\n=== started {time.strftime('%Y-%m-%d %H:%M:%S')} "
+                f"v{APP_VERSION} pid {os.getpid()} ===\n")
+        faulthandler.enable(file=f, all_threads=True)
+
+        def _hook(exc_type, exc, tb):
+            f.write(f"--- unhandled {time.strftime('%H:%M:%S')} ---\n")
+            traceback.print_exception(exc_type, exc, tb, file=f)
+
+        sys.excepthook = _hook
+        threading.excepthook = lambda a: _hook(a.exc_type, a.exc_value, a.exc_traceback)
+        return f
+    except Exception:
+        return None  # diagnostics must never be the reason the server won't start
 
 # Freshness window (ms) for the client timestamp, enforced against the server's OWN
 # clock. Kept tight: the phone first calls the unsigned GET /time beacon, learns the
@@ -453,7 +492,10 @@ def _type_unicode_win(text):
         raise ctypes.WinError(ctypes.get_last_error())
 
 
-_TYPE_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_type.log")
+# Beside the secret, not beside the script: under PyInstaller --onefile the script
+# lives in a temp directory that is wiped on exit, so this log used to disappear
+# exactly when something had gone wrong.
+_TYPE_LOG = str(CONFIG_DIR / "type.log")
 
 
 def _type_log(msg):
@@ -1317,7 +1359,11 @@ def check_for_update():
     url = os.environ.get("VOXMANAGER_UPDATE_URL", UPDATE_MANIFEST_URL)
     try:
         with urllib.request.urlopen(url, timeout=8) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
+            # utf-8-sig, not utf-8: a manifest saved by an editor or by PowerShell
+            # can carry a BOM, and json.loads() would raise on it. The exception is
+            # swallowed by the caller, so the symptom would be updates silently
+            # never appearing, which is the worst way for this to fail.
+            data = json.loads(resp.read().decode("utf-8-sig"))
         ver = str(data.get("version", "")).strip()
         dl = str(data.get("url", "")).strip()
         if ver and dl and _is_newer(ver, APP_VERSION):
@@ -1409,6 +1455,11 @@ def run_tray(server, port):
 # ---------------------------------------------------------------- main
 
 def main():
+    # First thing, so a crash during startup is captured too. The handle is kept in
+    # a module-level name because faulthandler writes to it from a signal handler.
+    global _crash_log_handle
+    _crash_log_handle = _enable_crash_log()
+
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
