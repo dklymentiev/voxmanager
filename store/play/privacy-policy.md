@@ -44,11 +44,9 @@ is ready.
 
 ## Permissions and why
 
-- **Microphone (RECORD_AUDIO):** to capture your speech for dictation.
-- **Network (INTERNET / network state):** to discover and send text to your PC on
-  the local network.
-- **Foreground service (microphone):** to keep recognising while you are using the
-  app.
+- **Microphone.** To hear what you dictate. Nothing is recorded to a file.
+- **Network access.** To find your PC on the local network and send it the text.
+- **Running while you dictate.** So recognition does not stop when you switch away from the app or the screen dims.
 
 ## Children
 
