@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vox Manager "Aurora Mic" master icon. Source of truth for tray .ico and
+     Android launcher. Violet->green gradient microphone on a dark tile.
+     Colors mirror brand/tokens.json (surface, gradient.brand). -->
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- One gradient mapped over the mic's vertical extent (y 120..416) so the
+         whole mark reads as a single violet->green sweep. Matches the PC tray /
+         pairing window and the Android launcher exactly. -->
+    <linearGradient id="aurora" gradientUnits="userSpaceOnUse"
+                    x1="256" y1="120" x2="256" y2="416">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- tile (brand surface) -->
+  <rect x="16" y="16" width="480" height="480" rx="120" fill="#15132B"/>
+
+  <!-- microphone: cradle sits BELOW the capsule with a clear gap (no merge).
+       Shifted up 12 so the glyph is vertically centred (even padding in the tile). -->
+  <g transform="translate(0 -12)" fill="none" stroke="url(#aurora)" stroke-width="34"
+     stroke-linecap="round" stroke-linejoin="round">
+    <!-- capsule (y 120..296) -->
+    <rect x="208" y="120" width="96" height="176" rx="48" fill="url(#aurora)" stroke="none"/>
+    <!-- cradle U (lower semicircle, centre 256,272) -->
+    <path d="M168 272 a88 88 0 0 0 176 0"/>
+    <!-- stem -->
+    <line x1="256" y1="360" x2="256" y2="416"/>
+    <!-- base -->
+    <line x1="196" y1="416" x2="316" y2="416"/>
+  </g>
+</svg>

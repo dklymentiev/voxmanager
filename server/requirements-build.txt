@@ -1,0 +1,11 @@
+# Vox Manager PC server, packaging dependencies.
+# Only needed to produce a standalone executable or installer; running the server
+# from source needs requirements.txt alone.
+#
+#   pip install -r requirements.txt -r requirements-build.txt
+#
+# Used by packaging/build_windows.ps1, build_macos.sh, build_linux.sh and
+# packaging/release.ps1.
+-r requirements.txt
+
+pyinstaller>=6.0

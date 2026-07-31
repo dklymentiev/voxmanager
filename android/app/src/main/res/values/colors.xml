@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AUTO-GENERATED from brand/tokens.json by brand/generate.py. Do not hand-edit. -->
+<resources>
+    <color name="bg_dark">#07060F</color>
+    <color name="indigo">#4F46E5</color>
+    <color name="indigo_light">#7B6FF7</color>
+    <color name="green">#10B981</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="accent">#8B5CF6</color>
+    <color name="accent_2">#34D399</color>
+    <color name="rec_red">#F43F5E</color>
+    <color name="ink">#ECECF7</color>
+    <color name="muted">#9A9AB5</color>
+    <color name="faint">#5E5E7C</color>
+    <color name="wave_off">#4A4A66</color>
+</resources>

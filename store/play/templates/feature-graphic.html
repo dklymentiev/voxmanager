@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<!--
+  Play Store feature graphic, 1024x500. Brand: Aurora-Mic (dark, violet -> green).
+  Render to PNG: open in a browser and screenshot the .feature box at exactly
+  1024x500 (it is sized precisely), or use a headless shot:
+    surfer screenshot store/play/templates/feature-graphic.html graphics/feature.jpg
+  Save the result as store/play/graphics/feature-graphic.png (1024x500).
+-->
+<head>
+<meta charset="utf-8">
+<style>
+  :root{
+    --bg:#07060F; --surface:#15132B; --ink:#ECECF7; --muted:#9A9AB5;
+    --a1:#8B5CF6; --a2:#34D399;
+  }
+  html,body{margin:0;background:#000;}
+  .feature{
+    width:1024px;height:500px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(680px 520px at 12% -10%, rgba(139,92,246,.30), transparent 60%),
+      radial-gradient(680px 520px at 105% 120%, rgba(52,211,153,.22), transparent 60%),
+      var(--bg);
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    display:flex;align-items:center;gap:64px;padding:0 84px;box-sizing:border-box;
+  }
+  .icon{
+    width:236px;height:236px;flex:none;border-radius:52px;
+    box-shadow:0 24px 80px rgba(139,92,246,.35), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .copy{display:flex;flex-direction:column;}
+  .brand{
+    font-size:21px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;
+    background:linear-gradient(90deg,var(--a1),var(--a2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px;
+  }
+  .head{
+    font-size:92px;line-height:.98;font-weight:800;color:var(--ink);margin:0;
+    letter-spacing:-.02em;
+  }
+  .tag{font-size:28px;color:var(--muted);margin-top:22px;max-width:540px;line-height:1.3;}
+  .wave{position:absolute;left:0;right:0;bottom:0;height:4px;
+    background:linear-gradient(90deg,var(--a1),var(--a2));opacity:.9;}
+</style>
+</head>
+<body>
+  <div class="feature">
+    <img class="icon" src="../graphics/icon-512.png" alt="Vox Manager">
+    <div class="copy">
+      <div class="brand">Vox Manager</div>
+      <h1 class="head">Voice&nbsp;to&nbsp;PC</h1>
+      <div class="tag">Speak into your phone. Your words type themselves on your computer, over Wi-Fi.</div>
+    </div>
+    <div class="wave"></div>
+  </div>
+</body>
+</html>

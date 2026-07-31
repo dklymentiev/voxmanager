@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="18dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/ic_back" />
+
+    <!-- Searching for the PC -->
+    <LinearLayout
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="34dp">
+
+        <ProgressBar
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:indeterminateTint="@color/accent" />
+
+        <TextView
+            android:id="@+id/searchTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="@string/pair_searching"
+            android:textColor="@color/ink"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/searchSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@string/pair_searching_sub"
+            android:textColor="@color/muted"
+            android:textSize="13.5sp" />
+    </LinearLayout>
+
+    <!-- Choose a discovered computer -->
+    <LinearLayout
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="74dp"
+        android:paddingHorizontal="22dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pair_choose"
+            android:textColor="@color/ink"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/pair_choose_sub"
+            android:textColor="@color/muted"
+            android:textSize="13.5sp" />
+
+        <LinearLayout
+            android:id="@+id/pcListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/emptyList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pair_none_found"
+            android:textColor="@color/faint"
+            android:textSize="14sp"
+            android:paddingVertical="8dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/getAppLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pair_get_app"
+            android:textColor="#C9BDFF"
+            android:textSize="14sp"
+            android:paddingVertical="10dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/enterIpRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="4dp"
+            android:paddingVertical="14dp"
+            android:paddingHorizontal="14dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_plus"
+                android:contentDescription="@string/pair_enter_ip_manual" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pair_enter_ip_manual"
+                android:textColor="#C9BDFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/rescanButton"
+            style="@style/AppButton.Neutral"
+            android:layout_width="match_parent"
+            android:layout_marginTop="14dp"
+            android:text="@string/search_again" />
+    </LinearLayout>
+
+    <!-- Enter the 6-digit code -->
+    <LinearLayout
+        android:id="@+id/codeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="26dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/codeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/ink"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.25"
+            android:text="@string/pair_code_sub"
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView android:id="@+id/box0" style="@style/CodeBoxTall" />
+                <TextView android:id="@+id/box1" style="@style/CodeBoxTall" />
+                <TextView android:id="@+id/box2" style="@style/CodeBoxTall" />
+                <TextView android:id="@+id/box3" style="@style/CodeBoxTall" />
+                <TextView android:id="@+id/box4" style="@style/CodeBoxTall" />
+                <TextView android:id="@+id/box5" style="@style/CodeBoxTall" android:layout_marginEnd="0dp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/codeInput"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textColor="#00000000"
+                android:textCursorDrawable="@null"
+                android:cursorVisible="false"
+                android:importantForAutofill="no"
+                android:textSize="1sp"
+                android:contentDescription="@string/pair_enter_code" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/codeError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textColor="@color/rec_red"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            style="@style/AppButton.Primary"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="26dp"
+            android:minWidth="200dp"
+            android:paddingHorizontal="44dp"
+            android:paddingVertical="16dp"
+            android:textSize="18sp"
+            android:text="@string/connect" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:gravity="center"
+            android:text="@string/pair_code_hint"
+            android:textColor="@color/faint"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</FrameLayout>

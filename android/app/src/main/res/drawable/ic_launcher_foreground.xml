@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Concept A, ported 1:1 from the master brand/icon/aurora-mic.svg (512 viewport)
+     so the launcher matches the PC tray / pairing window and the brandbook exactly.
+     One gradient (violet #8B5CF6 -> green #34D399) mapped over the mic extent
+     y120..416. Cradle sits below the capsule with a gap. Inside the safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+  <!-- shift the whole glyph up 12 so it's vertically centred (even padding) -->
+  <group android:translateY="-12">
+
+    <!-- capsule (pill): x 208..304, y 120..296 -->
+    <path android:pathData="M208,168 a48,48 0 0 1 96,0 v80 a48,48 0 0 1 -96,0 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear"
+                android:startX="256" android:startY="120"
+                android:endX="256" android:endY="416"
+                android:startColor="#8B5CF6" android:endColor="#34D399" />
+        </aapt:attr>
+    </path>
+
+    <!-- cradle U: lower semicircle centre (256,272) r88, below the capsule -->
+    <path android:pathData="M168,272 a88,88 0 0 0 176,0"
+        android:strokeWidth="34" android:strokeLineCap="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient android:type="linear"
+                android:startX="256" android:startY="120"
+                android:endX="256" android:endY="416"
+                android:startColor="#8B5CF6" android:endColor="#34D399" />
+        </aapt:attr>
+    </path>
+
+    <!-- stem + base -->
+    <path android:pathData="M256,360 V416 M196,416 H316"
+        android:strokeWidth="34" android:strokeLineCap="round">
+        <aapt:attr name="android:strokeColor">
+            <gradient android:type="linear"
+                android:startX="256" android:startY="120"
+                android:endX="256" android:endY="416"
+                android:startColor="#8B5CF6" android:endColor="#34D399" />
+        </aapt:attr>
+    </path>
+  </group>
+</vector>

@@ -1,0 +1,17 @@
+# Vox Manager PC server, runtime dependencies (cross-platform).
+# Packaging tools live in requirements-build.txt so that running the server does
+# not pull in PyInstaller.
+pynput>=1.7.6        # sends the paste hotkey / fallback key events (Win/macOS/Linux)
+pyperclip>=1.8       # clipboard insert (atomic paste) — layout-independent, avoids per-key drops
+pywin32>=306; sys_platform == "win32"   # reliable Win32 Ctrl+V (falls back to pynput if absent)
+pystray>=0.19        # system-tray icon + menu
+Pillow>=10.0         # renders the tray icon and pairing window
+qrcode>=7.0          # "get the phone app" QR in the pairing window
+cryptography>=42.0   # pairing v3 key exchange (X25519 + HKDF + AES-GCM)
+
+# Platform notes:
+#   Windows : works out of the box.
+#   macOS   : pyobjc is pulled in by pynput/pystray; grant Accessibility +
+#             Input Monitoring to the built app.
+#   Linux   : tray needs an AppIndicator backend, e.g. on Debian/Ubuntu
+#             `sudo apt install gir1.2-appindicator3-0.1` (or libayatana-appindicator).

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vox Manager</string>
+
+    <!-- Connection status -->
+    <string name="status_disconnected">Not connected</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_reconnecting">Reconnecting…</string>
+    <string name="connect_failed_toast">Couldn\'t reach the PC. Check it\'s on and on the same Wi-Fi.</string>
+    <string name="reconnect_sub">lost link to %1$s</string>
+    <string name="connection_lost_toast">Connection lost. Make sure the PC server is running.</string>
+    <string name="typing_into">%1$s</string>
+
+    <!-- Main screen -->
+    <string name="prompt_not_connected">Not connected</string>
+    <string name="prompt_tap_wave">Tap the wave\nto start talking</string>
+    <string name="cd_wave_button">Start or stop recording</string>
+
+    <!-- Connection dialog -->
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="ip_hint">192.168.1.100</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="search_again">Search again</string>
+    <string name="add_ip">Add IP</string>
+
+    <!-- Computers (Wi-Fi-style list) -->
+    <string name="computers">Computers</string>
+    <string name="no_pcs">No computers paired yet</string>
+    <string name="pair_new_computer">Pair new computer</string>
+    <string name="pc_connected">Connected</string>
+    <string name="pc_tap_connect">Tap to connect</string>
+    <string name="unpair_one">Unpair %1$s?</string>
+
+    <!-- Shared -->
+    <string name="desktop_url">https://voxmanager.com</string>
+
+    <!-- Onboarding -->
+    <string name="onb_welcome_sub">Type on your computer with your voice.\nFirst, set up the desktop app.</string>
+    <string name="onb_welcome_cta">Get started</string>
+    <string name="onb_pc_title">Set up your PC</string>
+    <string name="onb_pc_sub">Vox Manager types on your computer, so it needs a small free app running on that PC. Install it from voxmanager.com, then come back here to pair.</string>
+    <string name="onb_pc_cta">Get the desktop app</string>
+    <string name="onb_pc_have">I\'ve installed it</string>
+    <string name="onb_mic_title">Microphone access</string>
+    <string name="onb_mic_sub">Vox Manager needs your microphone\nto hear what you dictate.</string>
+    <string name="onb_mic_cta">Allow microphone</string>
+    <string name="onb_denied_title">Microphone is off</string>
+    <string name="onb_denied_sub">Enable microphone access in\nsystem settings to dictate.</string>
+    <string name="onb_denied_cta">Open settings</string>
+    <string name="onb_skip">Not now</string>
+
+    <!-- Recognition language -->
+    <string name="recognition_language">Recognition language</string>
+    <string name="language_system_default">System default</string>
+
+    <!-- Pairing (6-digit code) -->
+    <string name="pair_device">Pair new PC</string>
+    <string name="unpair_all">Unpair all devices</string>
+    <string name="paired_ok">Paired successfully</string>
+    <string name="pair_enter_ip">Enter the PC\'s IP address</string>
+    <string name="pair_enter_code">Enter the 6-digit code</string>
+    <string name="pair_code_hint">On the PC: tray icon → Pair device (show code)</string>
+    <string name="pair_code_len">The code must be 6 digits</string>
+    <string name="pair_failed">Pairing failed. Check the code is current and the server is running.</string>
+    <string name="add_ip_hint">Type the server\'s IP address on your network.</string>
+    <string name="unpair_hint">You\'ll need the 6-digit code to pair this PC again.</string>
+    <string name="unpair_short">Unpair</string>
+    <string name="pair_with">Pair with %1$s</string>
+    <string name="pair_code_sub">Enter the 6-digit code\nshown on your PC</string>
+    <string name="pair_choose">Choose a computer</string>
+    <string name="pair_choose_sub">Tap the computer you want to pair</string>
+    <string name="pair_none_found">No computers found on this Wi-Fi</string>
+    <string name="pair_all_paired">All nearby computers are already paired</string>
+    <string name="pair_enter_ip_manual">Enter IP manually</string>
+    <string name="pair_searching">Looking for your PC…</string>
+    <string name="pair_searching_sub">Make sure the server is running on the same Wi-Fi</string>
+    <string name="pair_get_app">No desktop app on your PC yet? Get it at voxmanager.com</string>
+
+    <!-- Desktop app help (Settings) -->
+    <string name="settings_desktop_app">Desktop app</string>
+    <string name="settings_desktop_app_sub">Get the PC server at voxmanager.com</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ambient screen: radial dark base + soft purple/green glows, matching design2. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- base: deep radial from top-centre -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:centerX="0.5"
+                android:centerY="0.02"
+                android:gradientRadius="720dp"
+                android:startColor="#1A1736"
+                android:centerColor="#0C0A1C"
+                android:endColor="#07060F" />
+        </shape>
+    </item>
+
+    <!-- purple glow, top-left -->
+    <item
+        android:width="560dp"
+        android:height="560dp"
+        android:gravity="top|start">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:gradientRadius="280dp"
+                android:startColor="#596D4BFF"
+                android:endColor="#006D4BFF" />
+        </shape>
+    </item>
+
+    <!-- green glow, bottom-right -->
+    <item
+        android:width="520dp"
+        android:height="520dp"
+        android:gravity="bottom|end">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:gradientRadius="260dp"
+                android:startColor="#452BB98A"
+                android:endColor="#002BB98A" />
+        </shape>
+    </item>
+
+</layer-list>

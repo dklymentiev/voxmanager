@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<!-- Play store screenshot composition: a REAL app screenshot (authentic) inside a
+     device frame, on a branded background with a caption. Marketing chrome around a
+     real screen. Render at 1080x2160 via headless Chrome. Swap .shot src + .cap text
+     per screenshot. -->
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:2160px;overflow:hidden}
+  body{font-family:"Segoe UI Semibold","Segoe UI",Roboto,system-ui,sans-serif;
+       background:#0A0814;position:relative;color:#fff}
+  .bg{position:absolute;inset:0;background:
+      radial-gradient(900px 700px at 80% 12%, rgba(139,92,246,.40), transparent 60%),
+      radial-gradient(900px 800px at 12% 88%, rgba(52,211,153,.26), transparent 60%),
+      linear-gradient(180deg,#0E0B1E,#07060F)}
+  .wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+        padding:150px 80px 0}
+  .cap{font-size:84px;line-height:1.12;font-weight:800;text-align:center;letter-spacing:-1px}
+  .cap .grad{background:linear-gradient(90deg,#A78BFA,#34D399);-webkit-background-clip:text;
+             background-clip:text;color:transparent}
+  .sub{margin-top:26px;font-size:40px;font-weight:500;color:#B9B4D6;text-align:center}
+  /* device frame */
+  .phone{margin-top:96px;width:660px;border-radius:74px;padding:18px;
+         background:#000;border:2px solid #2A2740;
+         box-shadow:0 50px 120px rgba(0,0,0,.6),0 0 80px rgba(139,92,246,.18)}
+  .phone .screen{width:100%;border-radius:58px;overflow:hidden;display:block;background:#07060F}
+  .phone img{width:100%;display:block}
+</style></head>
+<body>
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="cap">Talk to your phone,<br><span class="grad">it types on your PC.</span></div>
+    <div class="sub">Hold it close, speak softly, your words appear on the computer.</div>
+    <div class="phone"><div class="screen"><img class="shot" src="../screenshots/01-dictation.png"></div></div>
+  </div>
+</body></html>

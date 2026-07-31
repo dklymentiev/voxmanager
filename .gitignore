@@ -1,0 +1,64 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Android
+android/app/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+
+# Certificates / signing / secrets (sensitive)
+*.pem
+*.jks
+*.keystore
+keystore.properties
+.env.local
+# No code reads this any more, but the rule stays: the pattern guards against the
+# class of mistake, not against one file. An API key dropped here again must not be
+# committable by a stray `git add -A`.
+.or_key
+
+# Python / PyInstaller (PC server)
+__pycache__/
+*.pyc
+server/dist/
+server/build/
+server/build_tmp/
+*.spec
+
+# Temp previews / scratch
+server/_*.png
+store/**/_*.png
+
+# Large legacy artifacts (packaged outputs, not source)
+releases/
+voice-to-pc-server.zip
+*.zip
+
+# Misc
+nul
+*.log
+.DS_Store
+Thumbs.db
+
+# Claude settings (local)
+.claude/settings.local.json
+
+# Working notes (local only). These are running checklists and product/business
+# planning, not documentation of the code: they would ship business strategy to a
+# public repo and go stale the moment they are read by anyone but the author.
+# Public-facing status lives in README.md, CHANGELOG.md and docs/ROADMAP.md.
+TODO.md
+BACKLOG.md
+# Same reasoning: competitive research naming other products, quoting their reviews
+# and drawing pricing conclusions is internal positioning work, not documentation of
+# this codebase.
+docs/COMPETITORS.md
